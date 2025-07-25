@@ -344,11 +344,11 @@ const LandingPage = ({ onPurchaseClick }) => {
       <section className="py-20 px-6 max-w-7xl mx-auto">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
-            What You Actually Get
+            The 10 VEO & AI Video Workflows
           </h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Not theory. Not courses. Not "frameworks." Real, working automation systems 
-            that you can implement in minutes and start generating revenue immediately.
+            Not theory. Not courses. Not "frameworks." Real, working video automation systems 
+            that generate viral content and convert viewers into buyers immediately.
           </p>
         </div>
 
