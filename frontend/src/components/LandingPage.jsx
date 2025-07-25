@@ -105,35 +105,86 @@ const LandingPage = ({ onPurchaseClick }) => {
   const workflows = [
     {
       id: 1,
-      title: "AI Lead Generation System",
-      description: "Automatically find, qualify, and reach out to prospects using AI-powered research and personalized messaging", 
+      title: "🎯 The Hypnotic VSL Machine",
+      description: "Creates high-converting video sales letters automatically. Input your offer, get a professional VSL in minutes.",
       revenue: "£15,000+",
-      timeToImplement: "30 minutes",
+      timeToImplement: "20 minutes",
       complexity: "Beginner"
     },
     {
       id: 2,
-      title: "Content Creation Automation",
-      description: "Generate, optimize, and distribute content across 12 platforms with zero manual work",
-      revenue: "£8,500+",
-      timeToImplement: "45 minutes",
-      complexity: "Intermediate"
+      title: "💰 The £47K Product Showcase Engine", 
+      description: "Turns boring product descriptions into cinematic showcases. This is the workflow that generated £47K in one week.",
+      revenue: "£47,000+",
+      timeToImplement: "25 minutes",
+      complexity: "Beginner",
+      highlight: true
     },
     {
       id: 3,
-      title: "Customer Support AI Agent",
-      description: "Handle 90% of customer inquiries automatically while maintaining personal touch",
-      revenue: "£12,300+",
-      timeToImplement: "1 hour", 
-      complexity: "Advanced"
+      title: "⚡ The Authority Quote Weaponizer",
+      description: "Transforms quotes into shareable, branded video content. Perfect for thought leadership and social proof.",
+      revenue: "£8,500+",
+      timeToImplement: "15 minutes",
+      complexity: "Beginner"
     },
     {
       id: 4,
-      title: "Sales Funnel Optimizer",
-      description: "Automatically A/B test and optimize every element of your sales process",
+      title: "🌀 The Reality Bender Storyteller",
+      description: "Creates engaging 'what if' content that hooks audiences. Builds emotional connection through alternate narratives.",
+      revenue: "£12,300+",
+      timeToImplement: "30 minutes",
+      complexity: "Intermediate"
+    },
+    {
+      id: 5,
+      title: "🎭 The Mind-Hook Mystery Generator",
+      description: "Creates conspiracy-style documentary content that goes viral. Drives massive engagement through intrigue.",
+      revenue: "£18,200+",
+      timeToImplement: "35 minutes",
+      complexity: "Intermediate"
+    },
+    {
+      id: 6,
+      title: "🚀 The Local Empire Builder",
+      description: "Automated commercial creation for local businesses. Perfect for agency services or your own ventures.",
       revenue: "£22,000+",
-      timeToImplement: "20 minutes",
-      complexity: "Beginner"
+      timeToImplement: "40 minutes",
+      complexity: "Advanced"
+    },
+    {
+      id: 7,
+      title: "🔥 The Algorithm Hijacker",
+      description: "Mass-produces trending, platform-optimized content. Hooks, storytelling, and CTAs all automated for virality.",
+      revenue: "£25,000+",
+      timeToImplement: "45 minutes",
+      complexity: "Advanced"
+    },
+    {
+      id: 8,
+      title: "🎬 The Hollywood B-Roll Thief",
+      description: "Automatically sources and edits cinematic footage. Professional video production without the costs.",
+      revenue: "£16,500+",
+      timeToImplement: "50 minutes",
+      complexity: "Advanced"
+    },
+    {
+      id: 9,
+      title: "🚫 The Platform Destroyer (FORBIDDEN)",
+      description: "The workflow that got me a cease & desist letter. Automates something platforms explicitly prohibit. Use at your own risk.",
+      revenue: "???",
+      timeToImplement: "Unknown",
+      complexity: "CLASSIFIED",
+      forbidden: true
+    },
+    {
+      id: 10,
+      title: "💀 The Agency Killer (ULTRA SECRET)",
+      description: "So powerful, agencies offered me £10K to bury it. Only 3 people have ever seen this workflow. Changes everything forever.",
+      revenue: "CLASSIFIED",
+      timeToImplement: "CLASSIFIED",
+      complexity: "ULTRA SECRET",
+      secret: true
     }
   ];
 
