@@ -191,28 +191,33 @@ const LandingPage = ({ onPurchaseClick }) => {
   const guruComparison = [
     {
       category: "Price",
-      them: "£3,000 - £5,000",
-      us: "£20 (83x cheaper)"
+      them: "£5,000+ for basic video automation",
+      us: "£20 for 10 advanced workflows"
     },
     {
-      category: "Time to Value",
-      them: "12 weeks of theory",
-      us: "Instant implementation"
+      category: "Content Strategy",
+      them: "£3,000 courses on 'content strategy'",
+      us: "Actual content-generating systems"
     },
     {
-      category: "Ongoing Costs",
-      them: "Monthly mastermind fees",
-      us: "Pay once, own forever"
+      category: "Video Consultation",
+      them: "£500/hour for 'video consultation'",
+      us: "Everything you need, ready to run"
     },
     {
-      category: "Support",
-      them: "£500/hour consultation",
-      us: "Complete documentation included"
+      category: "Learning Time",
+      them: "Months to learn video editing",
+      us: "Automated video creation in minutes"
     },
     {
-      category: "Results",
-      them: "Maybe you'll figure it out",
-      us: "Proven £47K+ results"
+      category: "Software & Team",
+      them: "Still need expensive software/team",
+      us: "Works with free and low-cost tools"
+    },
+    {
+      category: "Templates",
+      them: "Generic templates everyone uses",
+      us: "Custom, algorithm-optimized content"
     }
   ];
 
