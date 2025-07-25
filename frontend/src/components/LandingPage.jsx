@@ -230,7 +230,7 @@ const LandingPage = ({ onPurchaseClick }) => {
               size="lg" 
               className="bg-emerald-600 hover:bg-emerald-700 text-white px-12 py-4 text-xl font-bold rounded-full transition-all duration-300 hover:scale-105 shadow-xl hover:shadow-2xl"
             >
-              Get All Workflows for £20
+              Get All 10 VEO Workflows - £20
               <ArrowRight className="ml-2 h-5 w-5" />
             </Button>
             
