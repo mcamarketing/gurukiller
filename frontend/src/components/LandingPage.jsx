@@ -354,19 +354,48 @@ const LandingPage = ({ onPurchaseClick }) => {
 
         <div className="grid md:grid-cols-2 gap-8">
           {workflows.map((workflow) => (
-            <Card key={workflow.id} className="p-8 hover:shadow-xl transition-all duration-300 border-2 hover:border-emerald-200">
+            <Card key={workflow.id} className={`p-8 hover:shadow-xl transition-all duration-300 border-2 ${
+              workflow.highlight ? 'border-emerald-300 bg-emerald-50' :
+              workflow.forbidden ? 'border-red-300 bg-red-50' :
+              workflow.secret ? 'border-purple-300 bg-purple-50' :
+              'hover:border-emerald-200'
+            }`}>
               <CardHeader className="p-0 mb-6">
                 <div className="flex items-center justify-between mb-4">
                   <Badge className={`
                     ${workflow.complexity === 'Beginner' ? 'bg-green-100 text-green-700' : 
-                      workflow.complexity === 'Intermediate' ? 'bg-yellow-100 text-yellow-700' : 
-                      'bg-red-100 text-red-700'}
+                      workflow.complexity === 'Intermediate' ? 'bg-yellow-100 text-yellow-700' :
+                      workflow.complexity === 'Advanced' ? 'bg-red-100 text-red-700' :
+                      workflow.complexity === 'CLASSIFIED' ? 'bg-red-200 text-red-800' :
+                      'bg-purple-200 text-purple-800'}
                   `}>
                     {workflow.complexity}
                   </Badge>
-                  <div className="text-2xl font-bold text-emerald-600">{workflow.revenue}</div>
+                  <div className={`text-2xl font-bold ${
+                    workflow.highlight ? 'text-emerald-600' :
+                    workflow.forbidden ? 'text-red-600' :
+                    workflow.secret ? 'text-purple-600' :
+                    'text-emerald-600'
+                  }`}>
+                    {workflow.revenue}
+                  </div>
                 </div>
                 <h3 className="text-2xl font-bold text-gray-900">{workflow.title}</h3>
+                {workflow.highlight && (
+                  <div className="bg-emerald-100 text-emerald-800 px-3 py-1 rounded-full text-sm font-medium inline-block mt-2">
+                    ⭐ The £47K Workflow
+                  </div>
+                )}
+                {workflow.forbidden && (
+                  <div className="bg-red-100 text-red-800 px-3 py-1 rounded-full text-sm font-medium inline-block mt-2">
+                    ⚠️ Cease & Desist Received
+                  </div>
+                )}
+                {workflow.secret && (
+                  <div className="bg-purple-100 text-purple-800 px-3 py-1 rounded-full text-sm font-medium inline-block mt-2">
+                    🔒 Only 3 People Have Seen This
+                  </div>
+                )}
               </CardHeader>
               <CardContent className="p-0">
                 <p className="text-gray-600 mb-6 leading-relaxed">{workflow.description}</p>
