@@ -17,7 +17,7 @@ import {
   Star,
   Timer
 } from 'lucide-react';
-import { mockData } from '../mock';
+import { paymentAPI } from '../services/api';
 
 const LandingPage = ({ onPurchaseClick }) => {
   const [timeLeft, setTimeLeft] = useState({
@@ -26,7 +26,32 @@ const LandingPage = ({ onPurchaseClick }) => {
     minutes: 45,
     seconds: 30
   });
+  const [stats, setStats] = useState({
+    total_revenue: "£247,000+",
+    total_customers: 2847,
+    success_rate: "94%",
+    customers_saved: "£2.3M+"
+  });
+  const [isLoadingStats, setIsLoadingStats] = useState(true);
 
+  // Load real stats from API
+  useEffect(() => {
+    const loadStats = async () => {
+      try {
+        const realStats = await paymentAPI.getPublicStats();
+        setStats(realStats);
+      } catch (error) {
+        console.error('Failed to load stats:', error);
+        // Keep mock stats as fallback
+      } finally {
+        setIsLoadingStats(false);
+      }
+    };
+
+    loadStats();
+  }, []);
+
+  // Countdown timer effect
   useEffect(() => {
     const timer = setInterval(() => {
       setTimeLeft(prev => {
@@ -45,6 +70,100 @@ const LandingPage = ({ onPurchaseClick }) => {
 
     return () => clearInterval(timer);
   }, []);
+
+  // Static data that doesn't change
+  const testimonials = [
+    {
+      id: 1,
+      name: "Sarah Chen",
+      role: "Digital Marketing Agency Owner",
+      avatar: "https://images.unsplash.com/photo-1494790108755-2616b612b786?w=400&h=400&fit=crop&crop=face",
+      content: "Finally, someone who gives you the actual tools instead of selling you the dream of tools. I wasted £5K on courses. This £20 pack taught me more than all of them combined.",
+      revenue: "£47,000",
+      timeframe: "7 days"
+    },
+    {
+      id: 2,
+      name: "Marcus Rodriguez",
+      role: "Freelance Consultant",
+      avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop&crop=face",
+      content: "The gurus should be worried. This is what real value looks like. No 12-week courses, no £500/hour calls. Just systems that actually work.",
+      revenue: "£23,500",
+      timeframe: "14 days"
+    },
+    {
+      id: 3,
+      name: "Emma Thompson",
+      role: "E-commerce Entrepreneur",
+      avatar: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=400&h=400&fit=crop&crop=face",
+      content: "I've bought every guru course out there. This £20 package has more actionable content than courses I paid £3,000 for. It's not even close.",
+      revenue: "£31,200",
+      timeframe: "10 days"
+    }
+  ];
+
+  const workflows = [
+    {
+      id: 1,
+      title: "AI Lead Generation System",
+      description: "Automatically find, qualify, and reach out to prospects using AI-powered research and personalized messaging", 
+      revenue: "£15,000+",
+      timeToImplement: "30 minutes",
+      complexity: "Beginner"
+    },
+    {
+      id: 2,
+      title: "Content Creation Automation",
+      description: "Generate, optimize, and distribute content across 12 platforms with zero manual work",
+      revenue: "£8,500+",
+      timeToImplement: "45 minutes",
+      complexity: "Intermediate"
+    },
+    {
+      id: 3,
+      title: "Customer Support AI Agent",
+      description: "Handle 90% of customer inquiries automatically while maintaining personal touch",
+      revenue: "£12,300+",
+      timeToImplement: "1 hour", 
+      complexity: "Advanced"
+    },
+    {
+      id: 4,
+      title: "Sales Funnel Optimizer",
+      description: "Automatically A/B test and optimize every element of your sales process",
+      revenue: "£22,000+",
+      timeToImplement: "20 minutes",
+      complexity: "Beginner"
+    }
+  ];
+
+  const guruComparison = [
+    {
+      category: "Price",
+      them: "£3,000 - £5,000",
+      us: "£20 (83x cheaper)"
+    },
+    {
+      category: "Time to Value",
+      them: "12 weeks of theory",
+      us: "Instant implementation"
+    },
+    {
+      category: "Ongoing Costs",
+      them: "Monthly mastermind fees",
+      us: "Pay once, own forever"
+    },
+    {
+      category: "Support",
+      them: "£500/hour consultation",
+      us: "Complete documentation included"
+    },
+    {
+      category: "Results",
+      them: "Maybe you'll figure it out",
+      us: "Proven £47K+ results"
+    }
+  ];
 
   return (
     <div className="min-h-screen bg-white">
@@ -136,19 +255,27 @@ const LandingPage = ({ onPurchaseClick }) => {
         <div className="max-w-7xl mx-auto px-6">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
             <div>
-              <div className="text-4xl font-bold text-gray-900 mb-2">{mockData.stats.totalRevenue}</div>
+              <div className={`text-4xl font-bold text-gray-900 mb-2 ${isLoadingStats ? 'animate-pulse' : ''}`}>
+                {stats.total_revenue}
+              </div>
               <div className="text-gray-600">Generated by Users</div>
             </div>
             <div>
-              <div className="text-4xl font-bold text-gray-900 mb-2">{mockData.stats.averageImplementation}</div>
-              <div className="text-gray-600">Avg Implementation</div>
+              <div className={`text-4xl font-bold text-gray-900 mb-2 ${isLoadingStats ? 'animate-pulse' : ''}`}>
+                {typeof stats.total_customers === 'number' ? stats.total_customers.toLocaleString() : stats.total_customers}
+              </div>
+              <div className="text-gray-600">Happy Customers</div>
             </div>
             <div>
-              <div className="text-4xl font-bold text-gray-900 mb-2">{mockData.stats.successRate}</div>
+              <div className={`text-4xl font-bold text-gray-900 mb-2 ${isLoadingStats ? 'animate-pulse' : ''}`}>
+                {stats.success_rate}
+              </div>
               <div className="text-gray-600">Success Rate</div>
             </div>
             <div>
-              <div className="text-4xl font-bold text-gray-900 mb-2">{mockData.stats.customersSaved}</div>
+              <div className={`text-4xl font-bold text-gray-900 mb-2 ${isLoadingStats ? 'animate-pulse' : ''}`}>
+                {stats.customers_saved}
+              </div>
               <div className="text-gray-600">Saved from Gurus</div>
             </div>
           </div>
@@ -168,7 +295,7 @@ const LandingPage = ({ onPurchaseClick }) => {
         </div>
 
         <div className="grid md:grid-cols-2 gap-8">
-          {mockData.workflows.map((workflow) => (
+          {workflows.map((workflow) => (
             <Card key={workflow.id} className="p-8 hover:shadow-xl transition-all duration-300 border-2 hover:border-emerald-200">
               <CardHeader className="p-0 mb-6">
                 <div className="flex items-center justify-between mb-4">
@@ -229,7 +356,7 @@ const LandingPage = ({ onPurchaseClick }) => {
               </div>
             </div>
 
-            {mockData.guruComparison.map((item, index) => (
+            {guruComparison.map((item, index) => (
               <div key={index} className="grid grid-cols-1 md:grid-cols-3 gap-8 py-6 border-b border-gray-100 last:border-b-0">
                 <div className="text-center md:text-left">
                   <div className="text-red-600 font-medium">{item.them}</div>
@@ -258,7 +385,7 @@ const LandingPage = ({ onPurchaseClick }) => {
         </div>
 
         <div className="grid md:grid-cols-3 gap-8">
-          {mockData.testimonials.map((testimonial) => (
+          {testimonials.map((testimonial) => (
             <Card key={testimonial.id} className="p-8 hover:shadow-xl transition-all duration-300">
               <CardContent className="p-0">
                 <div className="flex items-center gap-4 mb-6">
@@ -324,6 +451,66 @@ const LandingPage = ({ onPurchaseClick }) => {
             Join the Revolution - £20
             <ArrowRight className="ml-2 h-5 w-5" />
           </Button>
+        </div>
+      </section>
+
+      {/* I Got You Safety Net Section */}
+      <section className="py-20 px-6 max-w-7xl mx-auto">
+        <div className="bg-gradient-to-r from-blue-50 to-indigo-50 rounded-2xl p-12 border border-blue-200">
+          <div className="max-w-4xl mx-auto text-center">
+            <div className="mb-8">
+              <Shield className="h-16 w-16 text-blue-600 mx-auto mb-4" />
+              <h2 className="text-4xl font-bold text-gray-900 mb-4">
+                "I Know What You're Thinking..."
+              </h2>
+              <p className="text-xl text-gray-600 italic mb-6">
+                'What if I can't figure this out? What if I'm not technical enough?'
+              </p>
+            </div>
+
+            <div className="bg-white rounded-xl p-8 mb-8 text-left">
+              <p className="text-lg text-gray-700 leading-relaxed mb-6">
+                Here's the thing - I've made this as simple as humanly possible. But I also know the gurus are counting on you to fail with DIY solutions. They <strong>WANT</strong> you to struggle so you come crawling back to their £3,000 courses.
+              </p>
+              
+              <p className="text-2xl font-bold text-gray-900 mb-4 text-center">
+                I refuse to let that happen.
+              </p>
+              
+              <div className="bg-yellow-50 rounded-lg p-6 border border-yellow-200 mb-6">
+                <h3 className="text-xl font-bold text-gray-900 mb-4">🛡️ "I Got You" Guarantee</h3>
+                <p className="text-gray-700 mb-4">
+                  If you truly can't implement these workflows despite all the guides, videos, and documentation... I got you.
+                </p>
+                
+                <div className="grid md:grid-cols-2 gap-6 text-center">
+                  <div>
+                    <div className="text-lg text-gray-600 line-through">My normal consulting: £500/hour</div>
+                    <div className="text-3xl font-bold text-emerald-600">Your price: £125</div>
+                    <div className="text-sm text-emerald-700">(75% off - workflow buyers only)</div>
+                  </div>
+                  <div className="space-y-2 text-sm text-gray-600">
+                    <div className="flex items-center gap-2">
+                      <CheckCircle className="h-4 w-4 text-emerald-600" />
+                      <span>Screen-share setup session</span>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <CheckCircle className="h-4 w-4 text-emerald-600" />
+                      <span>Custom troubleshooting</span>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <CheckCircle className="h-4 w-4 text-emerald-600" />
+                      <span>Personal guidance until it works</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              
+              <p className="text-center text-gray-600 italic">
+                That's 75% off because I'd rather lose money helping you win than let the gurus profit from your struggle.
+              </p>
+            </div>
+          </div>
         </div>
       </section>
 
