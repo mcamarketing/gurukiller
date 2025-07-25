@@ -192,29 +192,36 @@ const LandingPage = ({ onPurchaseClick }) => {
           </Badge>
           
           <h1 className="text-5xl md:text-7xl font-bold leading-tight mb-8">
-            I spent{' '}
+            I'm Putting{' '}
             <span className="bg-gradient-to-r from-red-600 to-red-500 bg-clip-text text-transparent">
-              £15,000
+              £5,000
             </span>{' '}
-            learning what you'll get for{' '}
-            <span className="bg-gradient-to-r from-emerald-600 to-emerald-500 bg-clip-text text-transparent">
-              £20
-            </span>
+            Video Agency "Gurus" Out of Business
           </h1>
           
           <p className="text-xl md:text-2xl text-gray-600 mb-12 leading-relaxed max-w-3xl mx-auto">
-            The AI automation gurus are charging thousands for basic workflows you can implement in minutes. 
-            They've turned simple tools into complex courses, created artificial barriers around public information, 
-            and built empires selling dreams instead of systems.
+            Stop paying thousands for "video marketing courses." Get the exact VEO + AI workflows that generate viral content and convert viewers into buyers — for just £20.
           </p>
           
-          <div className="bg-gray-50 rounded-2xl p-8 mb-12 border-2 border-gray-100">
-            <p className="text-2xl font-bold text-gray-900 mb-4">I'm done with it.</p>
-            <p className="text-lg text-gray-700 leading-relaxed">
-              These are the exact workflows I use. The ones that generated{' '}
-              <span className="font-bold text-emerald-600">£47K for one user in 7 days</span>. 
-              The ones that save hundreds of hours. The ones they'd charge you £3,000 to learn about.
-            </p>
+          <div className="bg-gradient-to-r from-emerald-50 to-green-50 rounded-2xl p-8 mb-12 border-2 border-emerald-200">
+            <p className="text-2xl font-bold text-emerald-800 mb-4">One user made £47,000 in 7 days using workflow #3.</p>
+            <div className="grid md:grid-cols-3 gap-4 text-center">
+              <div className="bg-white rounded-lg p-4 border border-emerald-200">
+                <div className="text-lg font-bold text-gray-900">Video agencies charge</div>
+                <div className="text-2xl font-bold text-red-600">£5,000+</div>
+                <div className="text-sm text-gray-600">for this level of automation</div>
+              </div>
+              <div className="bg-white rounded-lg p-4 border border-emerald-200">
+                <div className="text-lg font-bold text-gray-900">Social media gurus sell</div>
+                <div className="text-2xl font-bold text-red-600">£3,000</div>
+                <div className="text-sm text-gray-600">courses on "content creation"</div>
+              </div>
+              <div className="bg-white rounded-lg p-4 border border-emerald-200">
+                <div className="text-lg font-bold text-gray-900">You get the actual</div>
+                <div className="text-2xl font-bold text-emerald-600">£20</div>
+                <div className="text-sm text-gray-600">working systems (this week only)</div>
+              </div>
+            </div>
           </div>
 
           <div className="flex flex-col md:flex-row items-center justify-center gap-6 mb-16">
